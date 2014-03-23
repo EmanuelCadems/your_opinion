@@ -1,0 +1,46 @@
+== README
+
+Welcome to "Your Opinion" app.
+
+* Ruby version
+
+  ruby-2.1.0
+
+  if you use rvm over ubuntu 13.04 you can copy the sample files for set a ruby
+  version and the appropriate gemset with:
+
+```bash
+  cp .ruby-version.sample .ruby-version
+  cp .ruby-gemset.sample .ruby-gemset
+```
+
+* System dependencies
+
+
+* Configuration
+
+* Database creation
+
+```bash
+  rake db:create
+  rake db:migrate
+```
+
+* Database initialization
+
+* How to run the test suite
+
+```bash
+  rake db:test:prepare
+  rspec spec/
+```
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.

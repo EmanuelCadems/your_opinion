@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>YourOpinion</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "sb-admin", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <% if small_form? %>
+    <%= yield %>
+  <% else %>
+    <div id="wrapper">
+      <%= render 'shared/admin/menu' %>
+      <%= render 'shared/admin/menu_side' %>
+      <div id="page-wrapper">
+        <%= yield %>
+      </div>
+      <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+  <% end %>
+
+</body>
+</html>
+
+
+
