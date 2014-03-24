@@ -1,0 +1,33 @@
+<%= link_to "Back", :back %>
+<%= link_to 'New Question', new_survey_question_path(parent) %>
+<%= link_to 'Take Survey', new_survey_customer_path(parent) %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Type Answer</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% collection.each do |question| %>
+      <tr>
+        <td><%= question.description %></td>
+        <td><%= question.type_answer %></td>
+        <td>
+          <%= link_to edit_survey_question_path(parent, question), class: "btn btn-xs btn-success" do %>
+            <span class="glyphicon glyphicon-edit"></span> Edit
+          <% end -%>
+        </td>
+        <td>
+          <%= link_to survey_question_path(parent, question), method: :delete, class: "btn btn-xs btn-danger" do %>
+            <span class="glyphicon glyphicon-remove"></span> Destroy
+          <% end -%>
+        </td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>
+
+<%#= will_paginate collection, renderer: BootstrapPagination::Rails %>

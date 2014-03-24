@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140322225527) do
+ActiveRecord::Schema.define(version: 20140323072136) do
+
+  create_table "answers", force: true do |t|
+    t.integer  "scale"
+    t.boolean  "yes"
+    t.string   "happy_level"
+    t.integer  "question_id"
+    t.integer  "customer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "answers", ["customer_id"], name: "index_answers_on_customer_id"
+  add_index "answers", ["question_id"], name: "index_answers_on_question_id"
 
   create_table "companies", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -31,5 +44,38 @@ ActiveRecord::Schema.define(version: 20140322225527) do
 
   add_index "companies", ["email"], name: "index_companies_on_email", unique: true
   add_index "companies", ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
+
+  create_table "customers", force: true do |t|
+    t.string   "name"
+    t.string   "sex"
+    t.text     "comment"
+    t.integer  "survey_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "customers", ["survey_id"], name: "index_customers_on_survey_id"
+
+  create_table "questions", force: true do |t|
+    t.string   "description"
+    t.string   "type_answer"
+    t.integer  "survey_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "questions", ["survey_id"], name: "index_questions_on_survey_id"
+
+  create_table "surveys", force: true do |t|
+    t.text     "introductory_text"
+    t.text     "goodbye_message"
+    t.integer  "max_questions"
+    t.string   "main_question"
+    t.integer  "company_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "surveys", ["company_id"], name: "index_surveys_on_company_id"
 
 end

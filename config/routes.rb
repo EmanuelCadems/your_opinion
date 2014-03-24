@@ -4,6 +4,19 @@ YourOpinion::Application.routes.draw do
   get "home/survey"
   get "home/question"
 
+  resources :surveys do
+    resources :questions
+    resources :customers do
+      member do
+        get 'more_feedback'
+      end
+    end
+  end
+
+  resources :customers do
+    resources :answers
+  end
+
 
   root to: "home#index"
   # The priority is based upon order of creation: first created -> highest priority.

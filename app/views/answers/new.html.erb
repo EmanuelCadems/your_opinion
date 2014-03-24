@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Survey</h3>
+                </div>
+                <div class="panel-body">
+                    <%= form_for([@customer, @answer], html: {role: 'form'}) do |f| %>
+                        <fieldset>
+                            <%= @question.description %>
+
+                            <% case @question.type_answer
+                               when 'Scale'%>
+                              <div class="form-group">
+                                  <%= f.label :scale %>
+                                  <%= f.text_field :scale, autocomplete: "true", class: "form-control", placeholder: "Scale (not required)" %>
+                              </div>
+                              <%= f.submit "Next", class: "btn btn-lg btn-success btn-block" %>
+
+                            <% when 'Happy Level' %>
+                              <div class="form-group">
+                                  <%= f.label :happy_level_satisfied, 'Satisfied', class: "radio-inline" %>
+                                  <%= f.radio_button :happy_level, 'Satisfied' %>
+
+                                  <%= f.label :happy_level_neutral, 'Neutral', class: "radio-inline" %>
+                                  <%= f.radio_button :happy_level, 'Neutral' %>
+
+                                  <%= f.label :happy_level_unsatisfied, 'Unsatisfied', class: "radio-inline" %>
+                                  <%= f.radio_button :happy_level, 'Unsatisfied' %>
+                              </div>
+                            <% when 'Yes Or Not' %>
+                              <div class="form-group">
+                                  <%= f.label :yes_true, 'Yes', class: "radio-inline" %>
+                                  <%= f.radio_button :yes, 'true' %>
+
+                                  <%= f.label :yes_false, 'No', class: "radio-inline" %>
+                                  <%= f.radio_button :yes, 'false' %>
+                              </div>
+                            <% end -%>
+
+                            <!-- Change this to a button or input when using this as a form -->
+
+                        </fieldset>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
