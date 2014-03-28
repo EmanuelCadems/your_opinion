@@ -1,19 +1,13 @@
 class CustomersController < InheritedResources::Base
   belongs_to :survey
 
-  # def create
-  #   create! { new_customer_answer_url(resource) }
-  # end
-
-  def more_feedback
-
-  end
+  def more_feedback; end
 
   def create
     super do |format|
       format.html do
         if parent.main_question
-          render action: 'more_feedback'
+          render 'more_feedback'
         else
           redirect_to new_customer_answer_url(resource)
         end
@@ -21,6 +15,9 @@ class CustomersController < InheritedResources::Base
     end
   end
 
+  def update
+    update! { root_url }
+  end
 
 private
   def resource_params

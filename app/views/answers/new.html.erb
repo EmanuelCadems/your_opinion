@@ -8,9 +8,9 @@
                 <div class="panel-body">
                     <%= form_for([@customer, @answer], html: {role: 'form'}) do |f| %>
                         <fieldset>
-                            <%= @question.description %>
+                            <%= @answer.question_description %>
 
-                            <% case @question.type_answer
+                            <% case @answer.question_type_answer
                                when 'Scale'%>
                               <div class="form-group">
                                   <%= f.label :scale %>

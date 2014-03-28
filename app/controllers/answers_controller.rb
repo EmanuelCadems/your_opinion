@@ -16,7 +16,7 @@ class AnswersController < ApplicationController
     answer.question = @question
     answer.save
 
-    if SurveyUtil.new(@customer.survey, @customer).next_question
+    if next_question
       redirect_to new_customer_answer_url(@customer)
     else
       redirect_to edit_survey_customer_path(@customer.survey, @customer)
@@ -26,7 +26,12 @@ class AnswersController < ApplicationController
 private
   def load_resources
     @customer = Customer.find(params[:customer_id])
-    @question = SurveyUtil.new(@customer.survey, @customer).next_question
+
+    @question = next_question
+  end
+
+  def next_question
+    SurveyUtil.new(@customer.survey).next_question_for_customer(@customer)
   end
 
   def answer_params

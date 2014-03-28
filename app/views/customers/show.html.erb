@@ -6,8 +6,11 @@
                     <h3 class="panel-title">Survey</h3>
                 </div>
                 <div class="panel-body">
-                    <p><%= resource.survey.goodbye_message %></p>
+                    <fieldset>
+                        <p><%= resource.survey.goodbye_message %></p>
+                    </fieldset>
                 </div>
+                <%= link_to "Go to Home", root_path, class: "btn btn-lg btn-info btn-block" %>
             </div>
         </div>
     </div>

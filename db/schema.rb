@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140323072136) do
+ActiveRecord::Schema.define(version: 20140326055410) do
 
   create_table "answers", force: true do |t|
     t.integer  "scale"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20140323072136) do
     t.integer  "survey_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "next_group", default: 0
   end
 
   add_index "customers", ["survey_id"], name: "index_customers_on_survey_id"
@@ -74,6 +75,7 @@ ActiveRecord::Schema.define(version: 20140323072136) do
     t.integer  "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "next_group",        default: 0
   end
 
   add_index "surveys", ["company_id"], name: "index_surveys_on_company_id"

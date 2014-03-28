@@ -37,7 +37,15 @@ Welcome to "Your Opinion" app.
 
 * Deployment instructions
 
-* ...
+* Demo version
+
+You can try this application in following link:
+
+youropinion.com
+
+User Account Restaurant Company: restaurant@gmail.com Pass: 123123123
+
+User Account Airline Company:    airline@gmail.com    Pass: 123123123
 
 
 Please feel free to use a different markup language if you do not plan to run
