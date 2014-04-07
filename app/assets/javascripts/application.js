@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require answer
-//= require_tree .
 //= require bootstrap
+//= require plugins/metisMenu/jquery.metisMenu
+//= require sb-admin.js

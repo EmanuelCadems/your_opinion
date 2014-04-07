@@ -31,11 +31,11 @@
                               </div>
                             <% when 'Yes Or Not' %>
                               <div class="form-group">
-                                  <%= f.label :yes_true, 'Yes', class: "radio-inline" %>
-                                  <%= f.radio_button :yes, 'true' %>
+                                  <%= f.label :yes_or_not_yes, 'Yes', class: "radio-inline" %>
+                                  <%= f.radio_button :yes_or_not, 'Yes' %>
 
-                                  <%= f.label :yes_false, 'No', class: "radio-inline" %>
-                                  <%= f.radio_button :yes, 'false' %>
+                                  <%= f.label :yes_or_not_not, 'No', class: "radio-inline" %>
+                                  <%= f.radio_button :yes_or_not, 'Not' %>
                               </div>
                             <% end -%>
 

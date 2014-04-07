@@ -36,25 +36,6 @@ namespace :db do
     Question.create!(description: 'Would you come back?', type_answer: 'Yes Or Not', survey: survey_restaurant)
 
     Customer.destroy_all
-
-    Survey.all.each do |survey|
-      FactoryGirl.create_list(:customer, 100, survey: survey, name: Faker::Name.name, sex: ['Male', 'Female'].sample)
-    end
-
     Answer.destroy_all
-    Customer.all.each do |customer|
-      customer.survey.questions.each do |question|
-        answer = Answer.new(customer: customer, question: question)
-        case question.type_answer
-        when 'Scale'
-          answer.scale = Array(1..5).sample
-        when 'Happy Level'
-          answer.happy_level = Answer::HAPPY_LEVEL.sample
-        when 'Yes Or Not'
-          answer.yes = [true, false].sample
-        end
-        answer.save
-      end
-    end
   end
 end

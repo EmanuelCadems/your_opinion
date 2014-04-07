@@ -35,7 +35,7 @@ private
   end
 
   def answer_params
-    params.require(:answer).permit(:scale, :yes, :happy_level,:question_id, :customer_id)
+    params.require(:answer).permit(:scale, :yes_or_not, :happy_level,:question_id, :customer_id)
   end
 
 end
