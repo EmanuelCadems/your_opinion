@@ -4,6 +4,7 @@ YourOpinion::Application.routes.draw do
   get "home/survey"
   get "home/question"
   get "statistics/morris"
+  get "statistics/donut"
 
   resources :surveys do
     resources :questions

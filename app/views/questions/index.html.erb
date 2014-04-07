@@ -8,6 +8,7 @@
       <th>Type Answer</th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -18,6 +19,11 @@
         <td>
           <%= link_to edit_survey_question_path(parent, question), class: "btn btn-xs btn-success" do %>
             <span class="glyphicon glyphicon-edit"></span> Edit
+          <% end -%>
+        </td>
+        <td>
+          <%= link_to survey_question_path(parent, question), class: "btn btn-xs btn-warning" do %>
+            <i class="fa fa-bar-chart-o fa-fw"></i> Statistic
           <% end -%>
         </td>
         <td>

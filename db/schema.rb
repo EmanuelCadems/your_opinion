@@ -11,20 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140326055410) do
+ActiveRecord::Schema.define(version: 20140406052106) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "answers", force: true do |t|
     t.integer  "scale"
-    t.boolean  "yes"
     t.string   "happy_level"
     t.integer  "question_id"
     t.integer  "customer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "yes_or_not"
   end
 
-  add_index "answers", ["customer_id"], name: "index_answers_on_customer_id"
-  add_index "answers", ["question_id"], name: "index_answers_on_question_id"
+  add_index "answers", ["customer_id"], name: "index_answers_on_customer_id", using: :btree
+  add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
 
   create_table "companies", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -42,8 +45,8 @@ ActiveRecord::Schema.define(version: 20140326055410) do
     t.string   "name"
   end
 
-  add_index "companies", ["email"], name: "index_companies_on_email", unique: true
-  add_index "companies", ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
+  add_index "companies", ["email"], name: "index_companies_on_email", unique: true, using: :btree
+  add_index "companies", ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true, using: :btree
 
   create_table "customers", force: true do |t|
     t.string   "name"
@@ -55,7 +58,7 @@ ActiveRecord::Schema.define(version: 20140326055410) do
     t.integer  "next_group", default: 0
   end
 
-  add_index "customers", ["survey_id"], name: "index_customers_on_survey_id"
+  add_index "customers", ["survey_id"], name: "index_customers_on_survey_id", using: :btree
 
   create_table "questions", force: true do |t|
     t.string   "description"
@@ -65,7 +68,7 @@ ActiveRecord::Schema.define(version: 20140326055410) do
     t.datetime "updated_at"
   end
 
-  add_index "questions", ["survey_id"], name: "index_questions_on_survey_id"
+  add_index "questions", ["survey_id"], name: "index_questions_on_survey_id", using: :btree
 
   create_table "surveys", force: true do |t|
     t.text     "introductory_text"
@@ -78,6 +81,6 @@ ActiveRecord::Schema.define(version: 20140326055410) do
     t.integer  "next_group",        default: 0
   end
 
-  add_index "surveys", ["company_id"], name: "index_surveys_on_company_id"
+  add_index "surveys", ["company_id"], name: "index_surveys_on_company_id", using: :btree
 
 end

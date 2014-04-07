@@ -19,6 +19,7 @@ gem 'will_paginate-bootstrap', '1.0.0'
 gem 'flay',                    '2.4.0'
 gem 'flog',                    '4.2.0'
 gem 'factory_girl_rails', '4.4.1'
+gem 'pg'
 
 group :doc do
   gem 'sdoc', require: false
@@ -26,7 +27,6 @@ end
 
 group :development, :test do
   gem 'rspec-rails',        '2.14.1'
-  gem 'sqlite3'
 end
 
 group :development do
@@ -43,7 +43,6 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
   gem 'puma'
   gem 'rails_12factor'
 end

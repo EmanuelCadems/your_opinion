@@ -9,4 +9,16 @@ class Question < ActiveRecord::Base
     :message    => "%{value} is not a valid type answer" }
 
   validates :description, presence: true
+
+
+  def case_answer(happy_level, yes_or_not, scale)
+    result = case type_answer
+    when 'Happy Level'
+      happy_level.call
+    when 'Yes Or Not'
+      yes_or_not.call
+    when 'Scale'
+      scale.call
+    end
+  end
 end

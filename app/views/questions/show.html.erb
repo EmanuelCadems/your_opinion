@@ -1,7 +1,24 @@
-
+<% content_for :head do %>
+    <%= stylesheet_link_tag "morris/morris-0.4.3.min", media: "all", "data-turbolinks-track" => true %>
+<% end %>
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Morris.js Charts</h1>
+        <h1 class="page-header">Statistics</h1>
+        <h4><%= resource.description %></h4>
+        <h5><em><b>Total Answers:</b></em> <%= resource.answers.count %></h5>
+        <h5>
+            <% case resource.type_answer
+                when 'Happy Level'%>
+                <em><b>Total Satisfied:</b></em> <%= resource.answers.satisfied.count %>
+                <em><b>Total Neutral:</b></em> <%= resource.answers.neutral.count %>
+                <em><b>Total Unsatisfied:</b></em> <%= resource.answers.unsatisfied.count %>
+            <%  when 'Yes Or Not'%>
+                <em><b>Total Yeses:</b></em> <%= resource.answers.yes.count %>
+                <em><b>Total Not:</b></em>   <%= resource.answers.not.count %>
+            <%  when 'Scale'%>
+                <em><b>Total:</b></em> <%= resource.answers.total_scale %>
+            <% end -%>
+        </h5>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -10,7 +27,7 @@
     <div class="col-lg-6">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Area Chart Example
+                Area Chart
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
@@ -24,7 +41,7 @@
     <div class="col-lg-6">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Bar Chart Example
+                Bar Chart
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
@@ -38,7 +55,7 @@
     <div class="col-lg-6">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Line Chart Example
+                Line Chart
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
@@ -52,7 +69,7 @@
     <div class="col-lg-6">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Donut Chart Example
+                Donut Chart
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
@@ -79,4 +96,11 @@
     </div>
     <!-- /.col-lg-6 -->
 </div>
+
+<% content_for :javascript do %>
+    <%= javascript_include_tag "statistics.js"%>
+    <%= javascript_include_tag "plugins/morris/raphael-2.1.0.min"%>
+    <%= javascript_include_tag "plugins/morris/morris"%>
+    <%= javascript_include_tag "demo/morris-demo"%>
+<% end %>
 <!-- /.row -->
