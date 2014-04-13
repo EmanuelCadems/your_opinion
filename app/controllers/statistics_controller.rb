@@ -4,7 +4,7 @@ class StatisticsController < ApplicationController
   def morris
     respond_to do |format|
       format.json do
-        render :json => [Statistic.new(question).morris, labels]
+        render :json => [MorrisStatistic.new(question).morris, labels]
       end
     end
   end
@@ -12,7 +12,7 @@ class StatisticsController < ApplicationController
   def donut
     respond_to do |format|
       format.json do
-        render :json => Statistic.new(question).donut
+        render :json => DonutStatistic.new(question).donut
       end
     end
   end

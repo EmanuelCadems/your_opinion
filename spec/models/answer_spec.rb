@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Answer do
   describe 'Columns' do
     it { should have_db_column(:scale).of_type(:integer) }
-    it { should have_db_column(:yes).of_type(:boolean) }
+    it { should have_db_column(:yes_or_not).of_type(:string) }
     it { should have_db_column(:happy_level).of_type(:string) }
     it { should have_db_index(:question_id) }
     it { should have_db_index(:customer_id) }
