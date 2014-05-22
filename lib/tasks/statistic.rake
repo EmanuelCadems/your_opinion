@@ -10,7 +10,12 @@ namespace :statistic do
 
     Customer.all.each do |customer|
       customer.survey.questions.each do |question|
-        answer = Answer.new(customer: customer, question: question, created_at: range_date.sample)
+        answer = Answer.new(
+          customer: customer,
+          question: question,
+          created_at: range_date.sample
+          )
+
         case question.type_answer
         when 'Scale'
           answer.scale = Array(1..5).sample
@@ -22,7 +27,5 @@ namespace :statistic do
         answer.save
       end
     end
-
   end
 end
-
