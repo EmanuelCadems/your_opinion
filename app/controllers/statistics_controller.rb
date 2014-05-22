@@ -4,7 +4,7 @@ class StatisticsController < ApplicationController
   def morris
     respond_to do |format|
       format.json do
-        render :json => [MorrisStatistic.new(question).morris, labels]
+        render :json => [call_service, labels]
       end
     end
   end
@@ -12,12 +12,19 @@ class StatisticsController < ApplicationController
   def donut
     respond_to do |format|
       format.json do
-        render :json => DonutStatistic.new(question).donut
+        render :json => call_service
       end
     end
   end
 
 private
+  def call_service
+    "#{type_answer}#{action_name.humanize}".constantize.new(question).result
+  end
+
+  def type_answer
+    question.type_answer.dup.delete(" ")
+  end
 
   def question
     Question.find(params[:question_id])
